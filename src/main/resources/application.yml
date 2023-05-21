@@ -1,0 +1,34 @@
+#Configuración de swagger
+springdoc:
+  # define como se muestran listadas las operaciones: [list|full|none]
+  swagger-ui.doc-expansion: list
+  # formateado de JSON
+  writer-with-default-pretty-printer: true
+  # ordenación alfabetica de recursos y operaciones
+  writer-with-order-by-keys: true
+  # propiedades para customizar la información de la documentación
+  custom-config:
+    group: zoo
+    path-match: /api/v1/**
+    package-scan: es.erumo.poc.swagger
+    api-title: Zoo
+    api-description: Aplicacion de Zoo 
+    contact-email: usuario@minsait.es
+    # versión obtenida la propiedad del archivo "pom.xml"
+    version: @project.version@
+    external-doc-desc: Manual de integrador REST
+    external-doc-URL: http://localhost:8080/manual.pdf
+# Jackson, configuración del parseo JSON de entrada y salida de la API
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-dates-with-zone-id: true
+    deserialization:
+      adjust-dates-to-context-time-zone: false
+      fail-on-unknown-properties: true
+    mapper:
+      sort-properties-alphabetically: true
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSS
+    time-zone: Europe/Madrid    
+debug: true
