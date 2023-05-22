@@ -31,4 +31,4 @@ spring:
       sort-properties-alphabetically: true
     date-format: yyyy-MM-dd'T'HH:mm:ss.SSS
     time-zone: Europe/Madrid    
-debug: true
+debug: false
