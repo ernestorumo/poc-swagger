@@ -1,7 +1,13 @@
 #Configuración de swagger
+server:
+  servlet:
+    context-path: /
 springdoc:
+  swagger-ui:
   # define como se muestran listadas las operaciones: [list|full|none]
-  swagger-ui.doc-expansion: list
+    doc-expansion: list
+    path: /swagger-ui.html
+    use-root-path: true
   # formateado de JSON
   writer-with-default-pretty-printer: true
   # ordenación alfabetica de recursos y operaciones
