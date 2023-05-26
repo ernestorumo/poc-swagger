@@ -8,6 +8,8 @@ springdoc:
     doc-expansion: list
     path: /swagger-ui.html
     use-root-path: true
+  api-docs:
+    path: /docs
   # formateado de JSON
   writer-with-default-pretty-printer: true
   # ordenación alfabetica de recursos y operaciones
