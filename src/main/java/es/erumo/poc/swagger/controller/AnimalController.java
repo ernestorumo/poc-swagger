@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import es.erumo.poc.swagger.exception.AnimalValidationException;
 import es.erumo.poc.swagger.model.AnimalRequest;
 import es.erumo.poc.swagger.model.AnimalResponse;
 
@@ -28,7 +29,7 @@ public class AnimalController implements AnimalOperation {
   @GetMapping(value = "/animales/{id}", produces = "application/json")
   public ResponseEntity<AnimalResponse> getAnimalById(@PathVariable("id") final Long id) {
 
-    return ResponseEntity.ok(new AnimalResponse(id, "tigreds"));
+    return ResponseEntity.ok(new AnimalResponse(id, "tigre"));
 
   }
 
@@ -37,6 +38,12 @@ public class AnimalController implements AnimalOperation {
   // cliente
   @PostMapping(value = "/animales", produces = {"application/json"}, consumes = {"application/json"})
   public ResponseEntity<AnimalResponse> createAnimal(@RequestBody final AnimalRequest animalRequest) {
+
+    if (animalRequest.getName().equalsIgnoreCase("coche")) {
+      throw new AnimalValidationException("El animal proporcionado no cumple con las siguientes validaciones:")
+          .error("name", String.format("El valor '%s' no es válido", animalRequest.getName()));
+
+    }
 
     final AnimalResponse animalResponse = new AnimalResponse(animalRequest.getId(), animalRequest.getName());
 
