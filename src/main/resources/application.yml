@@ -40,3 +40,5 @@ spring:
     date-format: yyyy-MM-dd'T'HH:mm:ss.SSS
     time-zone: Europe/Madrid    
 debug: false
+crawler: 
+  max-body-size: 5KB
